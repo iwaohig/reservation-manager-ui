@@ -127,18 +127,18 @@ class ReservationManager {
                     <button class="btn btn-small btn-secondary" onclick="reservationManager.logout()">ログアウト</button>
                 </div>
 
-                <!-- 次回実行予定 -->
-                <div class="section">
-                    <h3><span class="icon">📅</span>次回実行予定</h3>
-                    <div id="scheduleList">
-                        <div class="loading"></div>
-                    </div>
-                </div>
-
                 <!-- 予約一覧 -->
                 <div class="section">
                     <h3><span class="icon">📋</span>予約一覧</h3>
                     <div id="reservationList">
+                        <div class="loading"></div>
+                    </div>
+                </div>
+
+                <!-- 次回実行予定 -->
+                <div class="section">
+                    <h3><span class="icon">📅</span>次回実行予定</h3>
+                    <div id="scheduleList">
                         <div class="loading"></div>
                     </div>
                 </div>
