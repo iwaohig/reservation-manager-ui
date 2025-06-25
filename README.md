@@ -13,7 +13,6 @@ A modern, mobile-responsive web interface for managing GitHub-based automation p
 
 ## 🎯 Use Cases
 
-- Car sharing reservation automation
 - Meeting room booking systems
 - Equipment rental management
 - Event scheduling automation
