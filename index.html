@@ -194,6 +194,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -390,19 +391,34 @@
         }
 
         async function loadMainApp(token, owner, repo) {
-            // メイン管理UIを動的に読み込み
-            // 実際の実装では、別のHTMLファイルまたはコンポーネントを読み込む
             document.getElementById('authSection').classList.add('hidden');
             document.getElementById('mainContent').classList.remove('hidden');
+            
+            // ローディング表示
             document.getElementById('mainContent').innerHTML = `
                 <div style="text-align: center; padding: 40px;">
-                    <h2>🎉 認証成功！</h2>
-                    <p>リポジトリ: ${owner}/${repo}</p>
-                    <p style="margin-top: 20px;">
-                        <button class="btn" onclick="logout()">ログアウト</button>
-                    </p>
+                    <h2>📋 管理画面を読み込み中...</h2>
+                    <div class="loading" style="margin: 20px auto;"></div>
                 </div>
             `;
+
+            try {
+                // ReservationManagerを初期化
+                window.reservationManager = new ReservationManager(token, owner, repo);
+                const success = await window.reservationManager.initialize();
+                
+                if (!success) {
+                    throw new Error('管理画面の初期化に失敗しました');
+                }
+            } catch (error) {
+                document.getElementById('mainContent').innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <h2>❌ エラー</h2>
+                        <p style="color: #dc3545; margin: 20px 0;">${error.message}</p>
+                        <button class="btn" onclick="logout()">認証画面に戻る</button>
+                    </div>
+                `;
+            }
         }
 
         function logout() {
@@ -424,5 +440,6 @@
             }, 3000);
         }
     </script>
+    <script src="app.js"></script>
 </body>
 </html>
