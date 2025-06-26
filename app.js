@@ -124,7 +124,6 @@ class ReservationManager {
             <div class="main-app">
                 <div class="app-header">
                     <h2>📋 ${this.owner}/${this.repo}</h2>
-                    <button class="btn btn-small btn-secondary" onclick="reservationManager.logout()">ログアウト</button>
                 </div>
 
                 <!-- 予約一覧 -->
@@ -141,6 +140,11 @@ class ReservationManager {
                     <div id="scheduleList">
                         <div class="loading"></div>
                     </div>
+                </div>
+
+                <!-- ログアウト -->
+                <div class="section">
+                    <button class="btn btn-secondary" onclick="reservationManager.logout()">ログアウト</button>
                 </div>
 
                 <!-- 新規追加ボタン -->
